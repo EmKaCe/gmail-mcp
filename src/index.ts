@@ -1355,8 +1355,10 @@ const main = async () => {
   await stdioServer.connect(transport)
 
   // Streamable HTTP Server
-  const { app } = createStatefulServer(createServer)
-  app.listen(PORT)
+  if (process.env.PORT) {
+    const { app } = createStatefulServer(createServer)
+    app.listen(PORT)
+  }
 }
 
 main()
